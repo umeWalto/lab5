@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nonvirtual_override.cpp" />
+    <ClCompile Include="param.cpp" />
     <ClCompile Include="type_check.cpp" />
     <ClCompile Include="virtual_methods.cpp" />
   </ItemGroup>
