@@ -1,54 +1,52 @@
 #include <iostream>
+#include <memory>
+#include <string>
 using namespace std;
 
-class Base {
+// =========================
+// БЛОК 1
+// =========================
+class Base1 {
 public:
-    Base() { cout << "Конструктор Base\n"; }
-    virtual ~Base() { cout << "Деструктор Base\n"; }
+    Base1() { cout << "Base1: конструктор\n"; }
+    virtual ~Base1() { cout << "Base1: деструктор\n"; }
 
     void method1() {
-        cout << "Base::method1\n";
+        cout << "Base1::method1\n";
         method2();
         method3();
     }
 
     void method2() {
-        cout << "Base::method2\n";
+        cout << "Base1::method2\n";
     }
 
     virtual void method3() {
-        cout << "Base::method3\n";
+        cout << "Base1::method3\n";
     }
 };
 
-class Desc : public Base {
+class Desc1 : public Base1 {
 public:
-    Desc() { cout << "Конструктор Desc\n"; }
-    ~Desc() { cout << "Деструктор Desc\n"; }
+    Desc1() { cout << "Desc1: конструктор\n"; }
+    ~Desc1() { cout << "Desc1: деструктор\n"; }
 
     void method2() {
-        cout << "Desc::method2\n";
+        cout << "Desc1::method2\n";
     }
 
     void method3() override {
-        cout << "Desc::method3\n";
+        cout << "Desc1::method3\n";
     }
 };
 
-int main() {
-    setlocale(LC_ALL, "Ru");
-    cout << "Создаём объект Desc через указатель на Base\n";
-    Base* obj = new Desc();
+void run1() {
+    cout << "\n=== БЛОК 1: виртуальные и невиртуальные методы ===\n";
+    Base1* obj = new Desc1();
 
-    cout << "\nВызываем method1 (внутри вызываются method2 и method3)\n";
+    cout << "Вызов method1:\n";
     obj->method1();
 
-    cout << "\nВызываем method2 через Base*\n";
-    obj->method2();
-
-    cout << "\nВызываем method3 через Base*\n";
-    obj->method3();
-
-    cout << "\nУдаляем объект\n";
+    cout << "Удаление объекта:\n";
     delete obj;
 }
